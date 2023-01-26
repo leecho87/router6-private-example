@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+ol,ul {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+}
+html,body {
+  font-size:16px;
+  line-height:1.5;
+  /* font-family: */
+}
+caption {
+  display: none;
+}
