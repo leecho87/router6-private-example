@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import styled from '@emotion/styled'
+import { Grid, Button } from "@mui/material"
 import {ArrowDropDown,  ArrowDropUp} from '@mui/icons-material';
-import Sidebar from './Sidebar'
+import Sidebar from "./Sidebar"
+import Footer from "./Footer"
 
 const Wrapper = styled.section`
   position:relative;
@@ -20,14 +22,9 @@ const Wrapper = styled.section`
   }
 `;
 
-const Appbar = styled.div`
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:10px;
-  .selectCC {
-    position:relative;
-  }
+const SelectArea = styled.div`
+  position:relative;
+  display:inline-block;
   .value {
     display:flex;
     align-items:center;
@@ -52,7 +49,7 @@ const Appbar = styled.div`
       overflow-y:auto;
     }
   }
-`
+`;
 
 const AdminLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,43 +64,55 @@ const AdminLayout = () => {
     <Wrapper>
       <Sidebar />
       <div id="Container">
-        <Appbar>
-          <div className="selectCC">
-            <div
-              className="value"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <span>골프장 선택</span> 
-              {isOpen ? <ArrowDropUp /> : <ArrowDropDown />}
-            </div>
-            {isOpen && (
-              <div className="listBox">
-                <input
-                  type="text"
-                  placeholder="검색"
-                  value={keyword}
-                  onChange={handleChange}
-                />
-                <ul>
-                  <li>가 골프장</li>
-                  <li>나 골프장</li>
-                  <li>다 골프장</li>
-                  <li>라 골프장</li>
-                  <li>마 골프장</li>
-                  <li>바 골프장</li>
-                  <li>사 골프장</li>
-                </ul>
+        <Grid
+          container
+          sx={{ padding: "10px" }}
+          alignItems="center"
+        >
+          <Grid xs>
+            <SelectArea>
+              <div
+                className="value"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <span>골프장 선택</span> 
+                {isOpen ? <ArrowDropUp /> : <ArrowDropDown />}
               </div>
-            )}
-          </div>
-          <button onClick={() => {
-            localStorage.removeItem("jwt")
-            navigate("/login")
-          }}>로그아웃</button>
-        </Appbar>
+              {isOpen && (
+                <div className="listBox">
+                  <input
+                    type="text"
+                    placeholder="검색"
+                    value={keyword}
+                    onChange={handleChange}
+                  />
+                  <ul>
+                    <li>가 골프장</li>
+                    <li>나 골프장</li>
+                    <li>다 골프장</li>
+                    <li>라 골프장</li>
+                    <li>마 골프장</li>
+                    <li>바 골프장</li>
+                    <li>사 골프장</li>
+                  </ul>
+                </div>
+              )}
+            </SelectArea>
+          </Grid>
+          <Grid>
+            <Button
+              variant="contained"
+              onClick={() => {
+                localStorage.removeItem("jwt")
+                navigate("/login")
+              }}
+            >로그아웃</Button>
+          </Grid>
+        </Grid>
         <div className="outlet">
           <Outlet />
         </div>
+        <Footer />
       </div>
     </Wrapper>
   )
