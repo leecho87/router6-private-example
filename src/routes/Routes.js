@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Routes, Route } from "react-router-dom";
 import AuthLayout from "layouts/AuthLayout";
 import AdminLayout from "layouts/AdminLayout";
@@ -13,7 +13,7 @@ const generateRoutes = (Layout, routes) => {
     <Route element={<Layout />}>
       {routes.map((item, index) => {
         const Component = item.component;  
-        const Guard = item.guard || React.Fragment;
+        const Guard = item.guard || Fragment;
 
 
         if ( typeof Guard === 'symbol') {

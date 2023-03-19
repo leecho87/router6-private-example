@@ -1,12 +1,7 @@
-import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { AuthContext } from "./Auth";
-
 
 const Guard = () => {
-    const { auth } = useContext(AuthContext);
-
-    console.log('[Guard]', auth);
+    const auth = localStorage.getItem("jwt");
 
     return auth ? <Outlet /> : <Navigate to="/login" replace />
 }

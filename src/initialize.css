@@ -17,3 +17,10 @@ html,body {
 caption {
   display: none;
 }
+#root {
+  width:100vw;
+  height:100vh;
+}
+input {
+  width:100%;
+}
