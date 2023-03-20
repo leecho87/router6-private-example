@@ -17,7 +17,7 @@ const Wrapper = styled.section`
     flex-direction:column;
   }
   .outlet {
-    padding:10px;
+    padding:20px;
     flex:1;
   }
 `;
@@ -66,7 +66,7 @@ const AdminLayout = () => {
       <div id="Container">
         <Grid
           container
-          sx={{ padding: "10px" }}
+          sx={{ padding: "20px", backgroundColor: "#fff", borderBottom: "1px solid rgba(0, 0, 0, 0.12)" }}
           alignItems="center"
         >
           <Grid xs>

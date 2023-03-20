@@ -7,15 +7,27 @@ const drawerWidth = 160;
 const Wrapper = styled.article`
   width:${(props) => props.width}px;
   height:100%;
-  border-right:1px solid #000;
-  h1 {
-    padding:10px;
+  background-color:#f0f0f0;
+  .head {
+    padding:30px 24px;
     font-size:18px;
     text-align:center;
+    color:#fff;
+    background-image:linear-gradient(142deg, #2c7fff -5%, #6a14ad 114%);
+
     span {
       display:block;
       font-size:14px;
       font-weight:100;
+    }
+  }
+  .menu {
+    li {
+      height:64px;
+      button {
+        height:100%;
+        padding:0;
+      }
     }
   }
 `;
@@ -25,7 +37,6 @@ const Sidebar = () => {
 
   return (
     <Wrapper width={drawerWidth}>
-      <h1>본사 관리자<span>(G-Field / 경기관제 / 연단체)</span></h1>
       <Drawer
         variant="permanent"
         open={open}
@@ -39,7 +50,8 @@ const Sidebar = () => {
         }}
         hideBackdrop
       >
-        <List>
+        <h1 className="head">본사 관리자<span>(G-Field / 경기관제 / 연단체)</span></h1>
+        <List className="menu">
           <ListItem disablePadding>
             <ListItemButton>제휴골프장관리</ListItemButton>
           </ListItem>
